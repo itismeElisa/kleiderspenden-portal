@@ -40,9 +40,6 @@
     <main class="container my-5 flex-fill">
         <h2 class="mb-4">Registrierung einer Kleiderspende</h2>
 
-        <main class="container my-5 flex-fill">
-    <h2 class="mb-4">Registrierung einer Kleiderspende</h2>
-
     <form id="spendenForm">
 
         <!-- Auswahl Übergabeart -->
@@ -70,7 +67,10 @@
         <div class="mb-3" id="adressBlock" style="display:none;">
             <label for="plz" class="form-label">Postleitzahl</label>
             <input type="text" class="form-control" id="plz"
-                   maxlength="5" placeholder="z.B. 80331">
+                    maxlength="5" placeholder="z.B. 80331">
+                 <div class="invalid-feedback" id="plzError">
+                     Bitte geben Sie eine gültige Postleitzahl ein.
+                </div>
         </div>
 
         <!-- Art der Kleidung -->
@@ -100,6 +100,15 @@
         </button>
 
     </form>
+    <div id="bestaetigung" class="mt-5" style="display:none;">
+    <h4>Registrierung erfolgreich</h4>
+    <div class="alert alert-success">
+        <p><strong>Übergabeart:</strong> <span id="confUebergabe"></span></p>
+        <p><strong>Postleitzahl:</strong> <span id="confPlz"></span></p>
+        <p><strong>Kleidung:</strong> <span id="confKleidung"></span></p>
+        <p><strong>Krisengebiet:</strong> <span id="confKrise"></span></p>
+    </div>
+</div>
     </main>
 
     <!-- Footer -->

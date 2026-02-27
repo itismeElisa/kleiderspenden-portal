@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const vorOrt = document.getElementById("vorOrt");
     const abholung = document.getElementById("abholung");
     const adressBlock = document.getElementById("adressBlock");
+    const form = document.getElementById("spendenForm");
 
-    // Event Listener für Radiobuttons
+    // Radiobutton-Logik
     vorOrt.addEventListener("change", function () {
         if (vorOrt.checked) {
             adressBlock.style.display = "none";
@@ -17,37 +18,53 @@ document.addEventListener("DOMContentLoaded", function () {
             adressBlock.style.display = "block";
         }
     });
-const form = document.getElementById("spendenForm");
 
-form.addEventListener("submit", function (event) {
+    // Submit-Logik
+    form.addEventListener("submit", function (event) {
 
-    // Nur prüfen, wenn Abholung gewählt wurde
-    if (abholung.checked) {
+        const plzInput = document.getElementById("plz");
+        const plzError = document.getElementById("plzError");
 
-       const plzInput = document.getElementById("plz");
-const plzError = document.getElementById("plzError");
+        plzInput.classList.remove("is-invalid");
 
-// Reset Status
-plzInput.classList.remove("is-invalid");
+        if (abholung.checked) {
 
-const plz = plzInput.value.trim();
+            const plz = plzInput.value.trim();
 
-// 5-stellig numerisch prüfen
-if (!/^\d{5}$/.test(plz)) {
-    plzInput.classList.add("is-invalid");
-    plzError.textContent = "Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.";
-    event.preventDefault();
-    return;
-}
+            if (!/^\d{5}$/.test(plz)) {
+                plzInput.classList.add("is-invalid");
+                plzError.textContent = "Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.";
+                event.preventDefault();
+                return;
+            }
 
-// Zuständigkeitsprüfung
-if (!plz.startsWith("80")) {
-    plzInput.classList.add("is-invalid");
-    plzError.textContent = "Die Abholadresse liegt nicht im Zuständigkeitsbereich (80xxx).";
-    event.preventDefault();
-    return;
-}
-    }
+            if (!plz.startsWith("80")) {
+                plzInput.classList.add("is-invalid");
+                plzError.textContent = "Die Abholadresse liegt nicht im Zuständigkeitsbereich (80xxx).";
+                event.preventDefault();
+                return;
+            }
+        }
 
-});
+        // Alles gültig → Bestätigung anzeigen
+        event.preventDefault();
+
+        const uebergabeWert = vorOrt.checked
+            ? "Übergabe an der Geschäftsstelle"
+            : "Abholung";
+
+        document.getElementById("confUebergabe").textContent = uebergabeWert;
+        document.getElementById("confPlz").textContent =
+            abholung.checked ? plzInput.value : "-";
+
+        document.getElementById("confKleidung").textContent =
+            document.getElementById("kleidung").value;
+
+        document.getElementById("confKrise").textContent =
+            document.getElementById("krise").value;
+
+        form.style.display = "none";
+        document.getElementById("bestaetigung").style.display = "block";
+    });
+
 });
