@@ -66,5 +66,24 @@ document.addEventListener("DOMContentLoaded", function () {
         form.style.display = "none";
         document.getElementById("bestaetigung").style.display = "block";
     });
+    const neustartBtn = document.getElementById("neustartBtn");
 
+    neustartBtn.addEventListener("click", function () {
+
+        // Formular zurücksetzen
+        form.reset();
+
+        // Adressblock wieder ausblenden
+        adressBlock.style.display = "none";
+
+        // Validierungszustand entfernen
+        const plzInput = document.getElementById("plz");
+        plzInput.classList.remove("is-invalid");
+
+        // Bestätigung ausblenden
+        document.getElementById("bestaetigung").style.display = "none";
+
+        // Formular wieder anzeigen
+        form.style.display = "block";
+    });
 });
