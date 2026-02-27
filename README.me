@@ -1,0 +1,46 @@
+# Kleiderspenden-Portal
+Dieses Repository enthält die Umsetzung der Fallstudie 
+„Kleiderspenden-Registrierung“ im Rahmen des Moduls 
+Programmierung von Webanwendungsoberflächen.
+
+## Zielsetzung
+
+Ziel der Anwendung ist die Entwicklung einer webbasierten 
+Registrierungsmaske zur Erfassung von Kleiderspenden unter 
+Berücksichtigung funktionaler sowie sicherheitsrelevanter Anforderungen.
+
+---
+
+## Entwicklungsphasen
+
+### Phase 1 – Projektinitialisierung und Grundstruktur
+
+- Einrichtung eines öffentlichen GitHub-Repositories
+- SSH-basierte Authentifizierung
+- Initialisierung eines lokalen Git-Repositories
+- Implementierung der semantischen HTML-Grundstruktur
+- Einbindung von Bootstrap über CDN
+
+### Phase 2 – Implementierung der Formulargrundstruktur
+
+- Entwicklung einer strukturierten Eingabemaske zur Erfassung von Kleiderspenden
+- Integration von Radiobuttons zur Auswahl der Übergabeart
+- Implementierung von Auswahlfeldern (Kleidungstyp, Krisengebiet)
+- Vorbereitung eines dynamisch einblendbaren Adressblocks
+- Nutzung von Bootstrap-Komponenten zur responsiven Gestaltung
+
+Die Validierungs- und Logikfunktionen werden in den folgenden Phasen ergänzt.
+
+### Phase 3 – Implementierung der dynamischen Formularlogik
+
+- Einbindung einer externen JavaScript-Datei
+- Ereignisgesteuerte Steuerung der Formularanzeige
+- Dynamisches Ein- und Ausblenden des Adressblocks
+- Nutzung von Event-Listenern zur DOM-Manipulation
+
+### Phase 4 – Implementierung der Validierungslogik
+
+- Serverseitig nicht erforderliche, aber clientseitig implementierte Eingabeprüfung
+- Validierung der Postleitzahl auf fünfstellige numerische Eingabe
+- Implementierung einer Zuständigkeitsprüfung (80xxx)
+- Unterbindung der Formularübermittlung bei fehlerhaften Eingaben

@@ -24,21 +24,29 @@ form.addEventListener("submit", function (event) {
     // Nur prüfen, wenn Abholung gewählt wurde
     if (abholung.checked) {
 
-        const plz = document.getElementById("plz").value;
+       const plzInput = document.getElementById("plz");
+const plzError = document.getElementById("plzError");
 
-        // PLZ muss 5-stellig sein
-        if (plz.length !== 5 || isNaN(plz)) {
-            alert("Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.");
-            event.preventDefault();
-            return;
-        }
+// Reset Status
+plzInput.classList.remove("is-invalid");
 
-        // Näheprüfung (erste zwei Ziffern = 80)
-        if (plz.substring(0, 2) !== "80") {
-            alert("Die Abholadresse liegt nicht im Zuständigkeitsbereich (80xxx).");
-            event.preventDefault();
-            return;
-        }
+const plz = plzInput.value.trim();
+
+// 5-stellig numerisch prüfen
+if (!/^\d{5}$/.test(plz)) {
+    plzInput.classList.add("is-invalid");
+    plzError.textContent = "Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.";
+    event.preventDefault();
+    return;
+}
+
+// Zuständigkeitsprüfung
+if (!plz.startsWith("80")) {
+    plzInput.classList.add("is-invalid");
+    plzError.textContent = "Die Abholadresse liegt nicht im Zuständigkeitsbereich (80xxx).";
+    event.preventDefault();
+    return;
+}
     }
 
 });
