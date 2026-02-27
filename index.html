@@ -40,10 +40,66 @@
     <main class="container my-5 flex-fill">
         <h2 class="mb-4">Registrierung einer Kleiderspende</h2>
 
-        <p>
-            Bitte wählen Sie die gewünschte Übergabeart und geben Sie die 
-            erforderlichen Informationen ein.
-        </p>
+        <main class="container my-5 flex-fill">
+    <h2 class="mb-4">Registrierung einer Kleiderspende</h2>
+
+    <form id="spendenForm">
+
+        <!-- Auswahl Übergabeart -->
+        <div class="mb-3">
+            <label class="form-label">Art der Übergabe</label>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="uebergabe"
+                       id="vorOrt" value="vorOrt" required>
+                <label class="form-check-label" for="vorOrt">
+                    Übergabe an der Geschäftsstelle
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="uebergabe"
+                       id="abholung" value="abholung">
+                <label class="form-check-label" for="abholung">
+                    Abholung
+                </label>
+            </div>
+        </div>
+
+        <!-- Adressblock (wird später dynamisch angezeigt) -->
+        <div class="mb-3" id="adressBlock" style="display:none;">
+            <label for="plz" class="form-label">Postleitzahl</label>
+            <input type="text" class="form-control" id="plz"
+                   maxlength="5" placeholder="z.B. 80331">
+        </div>
+
+        <!-- Art der Kleidung -->
+        <div class="mb-3">
+            <label for="kleidung" class="form-label">Art der Kleidung</label>
+            <select id="kleidung" class="form-select" required>
+                <option value="">Bitte auswählen</option>
+                <option>Jacken</option>
+                <option>Hosen</option>
+                <option>Schuhe</option>
+            </select>
+        </div>
+
+        <!-- Krisengebiet -->
+        <div class="mb-3">
+            <label for="krise" class="form-label">Krisengebiet</label>
+            <select id="krise" class="form-select" required>
+                <option value="">Bitte auswählen</option>
+                <option>Region A</option>
+                <option>Region B</option>
+                <option>Region C</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Registrierung abschließen
+        </button>
+
+    </form>
     </main>
 
     <!-- Footer -->
